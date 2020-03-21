@@ -1,31 +1,13 @@
-package fii.practic.yonder.demo.entity;
+package fii.practic.yonder.demo.dto;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+public class PatientDTO {
 
-import javax.persistence.*;
-
-@Entity
-public class Patient {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    //@Column(name = "first_name")
     private String firstName;
-
     private String lastName;
-
     private Integer age;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Email email;
-
-    @ManyToOne
-    @JsonBackReference
-    private Doctor doctor;
-
-    public Patient() {}
+    private String emailAddress;
+    private Long doctorId;
 
     public Long getId() {
         return id;
@@ -59,19 +41,19 @@ public class Patient {
         this.age = age;
     }
 
-    public Email getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(Email email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Long getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 }
